@@ -1,10 +1,15 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 
 // Load environment variables from .env file
 dotenv.config();
 
+mongoose
+    .connect(process.env.MONGO_URI as string)
+    .then(() => {console.log('Connected to MongoDB')})
+    
 const app = express();
 
 // Parse JSON bodies (as sent by API clients)

@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import UserRoute from './routes/UserRoute';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -14,13 +15,10 @@ const app = express();
 
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
-
-// Enable CORS
 app.use(cors());
 
-// Your routes and middleware go here
+app.use('/api/user', UserRoute);
 
-// Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

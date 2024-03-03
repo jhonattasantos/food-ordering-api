@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post("/", jwtCheck ,UserController.create);
 router.put("/", 
-    jwtCheck ,
+    jwtCheck,
     jwtParse,
     validateUserRequest,
     UserController.update

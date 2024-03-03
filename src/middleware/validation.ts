@@ -24,12 +24,10 @@ export const validateUserRequest = [
         .isString()
         .notEmpty()
         .withMessage('Address is required'),
-    ,
     body('city')
         .isString()
         .notEmpty()
-        .withMessage('City is required')
-    ,
+        .withMessage('City is required'),
     body('country')
         .isString()
         .notEmpty()

@@ -46,4 +46,19 @@ const update = async (req: Request, res: Response) => {
     }
 }
 
-export default { create, update };
+const getOne = async (req: Request, res: Response) => {
+    try{
+        const user = await User.findOne({ _id: req.userId });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.json(user);
+    }catch(error){
+        console.error(error);
+        res.status(500).json({ message: 'Error getting user' });
+    }
+}
+
+export default { create, update, getOne };

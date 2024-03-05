@@ -12,5 +12,6 @@ router.put("/",
     validateUserRequest,
     UserController.update
 );
+router.get("/", jwtCheck,jwtParse, UserController.getOne);
 
 export default router;

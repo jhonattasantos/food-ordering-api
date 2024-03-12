@@ -30,4 +30,18 @@ const create = async (req: Request, res: Response) => {
     }
 }
 
-export default { create };
+const getOne = async (req: Request, res: Response) => {
+    try {
+        const restaurant = await Restaurant.findOne({ user: req.userId });
+        if (!restaurant) {
+            return res.status(404).json({ message: 'Restaurant not found' });
+        }
+        res.status(200).json(restaurant);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error getting restaurant' });
+    }
+}
+
+export default { create, getOne };
